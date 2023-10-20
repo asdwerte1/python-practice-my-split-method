@@ -4,9 +4,22 @@
 #If the string is empty -the function should return an empty list
 
 def mysplit(strng):
-    #
-    #Code here
-    #
+    result = []
+    if len(strng) == 0:
+        return result
+    else:
+        #Create a tmep variable to store each word until a space is created
+        #Add word to list end then reset each time
+        word = ""
+        for char in strng:
+            if char.isspace():
+                result.append(word)
+                word = ""
+            else:
+                word += char
+        #add the final word
+        result.append(word)
+        return result
 
 print(mysplit("To be or not to be, that is the question"))
 print(mysplit("To be or not to be,that is the question"))
