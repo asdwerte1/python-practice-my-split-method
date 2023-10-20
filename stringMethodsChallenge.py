@@ -13,12 +13,21 @@ def mysplit(strng):
         word = ""
         for char in strng:
             if char.isspace():
-                result.append(word)
-                word = ""
+                if word == "":
+                    continue
+                else:
+                    result.append(word.strip())
+                    word = ""
             else:
                 word += char
         #add the final word
-        result.append(word)
+        if result != "":
+            result.append(word)
+
+        #Check through list items - if any empty strings remove them
+        for item in result:
+            if len(item) == 0:
+                result.remove(item)
         return result
 
 print(mysplit("To be or not to be, that is the question"))
